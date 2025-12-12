@@ -33,7 +33,11 @@ The direct worklow in Isaac Lab is desinged to expose fine-grained control over 
 
 #### _Autotuned Robot Modeling_
 
-To reduce 
+To reduce the sim-to-real gap prior to learning a policy, an automated physics-parameter tuning framework based on Bayesian optimzation was developed. The Optuna hyperparameter optimzation library was employted to systematically calibrate key low-level physical parameters of the simulated Lite6 robot model. These parameters included joint friction coefficients, joint damping constants, and joint aramture values, which influence robot dynamics but were initially poorly speciifed by the manufacturer. Joint stiffness was set to zero to enable joint velocity control, consistent with recommendations in the Isaac Lab documentation.
+
+The autotuning produceure begins by collecting joint-level trajectores including positions, velocities, and torques, from real-world motion dmeostrations performed on the physical Lite6 robot arm. For each optimization trial, the same control policy is executed in simulation using a candidate set of physics parameters. The mean square error (MSE) between real and simulated joint trajectories is computed and used as the optimization objective. Optuna iterativley proposes parameter updates to minimize this error, yielding a set of physics paramters that best reproduce the observed real-world behavior.
+
+This approach enables fully automated identification of realistic simulation paramters, imporving correspondance between simulation and physical execution reducing the real-to-sim gap.
 
 #### Domain Randomization
 
