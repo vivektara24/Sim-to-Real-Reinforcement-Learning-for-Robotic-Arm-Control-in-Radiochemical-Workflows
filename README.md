@@ -27,7 +27,7 @@ This study investigates the use of deep rienforcment learning to train a robotic
 
 #### _Simulation Enviroment_
 
-Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. Traditional CPU-based simulators often struggle to meet the compuational demands of high fidelity physics, complex sensor models, and large-sclae parallelization. Isaac Lab offers a .
+Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. Isaac Lab offers a simulation framework 
 
 The direct worklow in Isaac Lab is desinged to expose fine-grained control over simulation and learning pipleines
 
