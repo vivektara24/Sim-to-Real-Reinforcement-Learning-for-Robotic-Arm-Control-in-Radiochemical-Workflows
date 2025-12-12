@@ -29,22 +29,19 @@ The approach yielded a 31.4% reduction in total joint position RMSE with improvm
 <table align="center">
   <thead>
     <tr>
-      <th>Column 1</th>
-      <th>Column 2</th>
-      <th>Column 3</th>
-      <th>Column 4</th>
-      <th>Column 5</th>
+      <th>Joint</th>
+      <th>Initial RMSE (deg)</th>
+      <th>Tuned RMSE (deg)</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 1<td>17.33</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 2<td>9.71</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 3<td>7.83</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 4<td>4.76</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 5<td>9.03</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Joint 6<td>4.50</td><td></td><td></td><td></td><td></td></tr>
+    <tr>Total<td>53.16</td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
 
