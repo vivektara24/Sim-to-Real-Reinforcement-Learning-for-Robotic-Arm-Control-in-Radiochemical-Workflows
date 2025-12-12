@@ -24,6 +24,20 @@ This study aims to train a robotic arm to perform a multip-step radiochemical se
 
 Two strategies are employed to address the real-to-sim gap: A Bayseian Optimzation based robot autotunign module and domain randomizatoion.
 
+<table align="center">
+  <thead>
+    <tr>
+      <th>Domain Parameter</th>
+      <th>Applied Noise Distribution(deg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Object Initial Position</td><td>17.33</td></tr>
+    <tr><td>Object Position Observation Noise</td><td>9.71</td></tr>
+    <tr><td>Joint Observation Noise</td><td>7.83</td</tr>
+    <tr><td>Action Noise</td><td>4.76</td><td></tr>
+  </tbody>
+</table>
 
 
 #### _Problem Statement_
