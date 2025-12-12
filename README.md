@@ -31,9 +31,13 @@ Training reinforcement learning policies on physical robots is impractible due t
 
 The direct worklow in Isaac Lab is desinged to expose fine-grained control over simulation and learning pipleines
 
-#### _Real-to-Sim Modeling_
+#### _Autotuned Robot Modeling_
 
 Two strategies are employed to address the real-to-sim gap: A Bayseian Optimzation based robot autotunign module and domain randomizatoion.
+
+#### Domain Randomization
+
+To improve robustness and further facilitate sim-to-real transfer, domain randomization was applied throughout training. Variability was introduced across object properties, sensory observations, and control actions to expose the the policy to a diverse range of operating conditions. This strategy encourages the learned policy to generalize beyond a single nominal simulation configuration. The specified randomized parameters and their associated noise distributions are summarized in Table 3.
 
 <table align="center">
   <thead>
