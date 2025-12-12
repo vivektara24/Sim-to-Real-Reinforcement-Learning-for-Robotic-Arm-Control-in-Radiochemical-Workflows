@@ -35,13 +35,13 @@ The approach yielded a 31.4% reduction in total joint position RMSE with improvm
     </tr>
   </thead>
   <tbody>
-    <tr><td>Joint 1</td><td>17.33</td><td></td><td></td><td></td></tr>
-    <tr><td>Joint 2</td><td>9.71</td><td></td><td></td><td></td></tr>
-    <tr><td>Joint 3</td><td>7.83</td><td></td><td></td><td></td></tr>
-    <tr><td>Joint 4</td><td>4.76</td><td></td><td></td><td></td></tr>
-    <tr><td>Joint 5</td><td>9.03</td><td></td><td></td><td></td></tr>
-    <tr><td>Joint 6</td><td>4.50</td><td></td><td></td><td></td></tr>
-    <tr><td>Total</td><td>53.16</td><td></td><td></td><td></td></tr>
+    <tr><td>Joint 1</td><td>17.33</td><td>11.05</td></tr>
+    <tr><td>Joint 2</td><td>9.71</td><td>8.78</td></tr>
+    <tr><td>Joint 3</td><td>7.83</td><td>4.40</td></tr>
+    <tr><td>Joint 4</td><td>4.76</td><td>4.72</td></tr>
+    <tr><td>Joint 5</td><td>9.03</td><td>4.99</td></tr>
+    <tr><td>Joint 6</td><td>4.50</td><td>2.50</td></tr>
+    <tr><td>Total</td><td>53.16</td><td>36.45</td></tr>
   </tbody>
 </table>
 
