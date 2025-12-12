@@ -91,7 +91,7 @@ _**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of th
     </tr>
   </thead>
   <tbody>
-    <tr><td>\frac{8}{10}</td><td>17.33</td><td>17.33</td><td>17.33</td></tr>
+    <tr><td>8/10</td><td>10/10</td><td>9/10</td><td>8/10</td><td>8.75/10</td></tr>
   </tbody>
 </table>
 
