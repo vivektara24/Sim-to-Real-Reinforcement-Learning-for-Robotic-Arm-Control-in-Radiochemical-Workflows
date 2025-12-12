@@ -24,7 +24,10 @@ This study aims to train a robotic arm to perform a multip-step radiochemical se
 
 ## Results
 
-The approach yielded a 31.4% reduction in total joint position RMSE with improvments observed in 
+## Results
+
+The proposed autotuning approach resulted in a **31.4% reduction in total joint position RMSE**, with improvements observed across all six joints. Joint-wise RMSE values before and after tuning are summarized in Table 1.
+
 
 <table align="center">
   <thead>
@@ -44,6 +47,8 @@ The approach yielded a 31.4% reduction in total joint position RMSE with improvm
     <tr><td>Total</td><td>53.16</td><td>36.45</td></tr>
   </tbody>
 </table>
+
+_**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of the Lite6 joints._
 
 
 ## Acknoledgments
