@@ -1,5 +1,11 @@
 # Sim-to-Real Reinforcement Learning for Robotic Arm Control in Radiochemical Workflows
 
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Methods](#methods)
+3. [Results](#results)
+4. [Acknowledgements](#acknowledgements)
+5. [References](#references)
 
 
 <p align="center">
