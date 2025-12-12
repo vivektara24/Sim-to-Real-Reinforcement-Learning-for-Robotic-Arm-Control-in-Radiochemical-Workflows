@@ -27,6 +27,10 @@ This study aims to train a robotic arm to perform a multip-step radiochemical se
 
 #### _Simulation Enviroment_
 
+Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. Traditional CPU-based simulators often struggle to meet the compuational demands of high fidelity physics, complex sensor models, and large-sclae parallelization. Isaac Lab offers a .
+
+The direct worklow in Isaac Lab is desinged to expose fine-grained control over simulation and learning pipleines
+
 #### _Real-to-Sim Modeling_
 
 Two strategies are employed to address the real-to-sim gap: A Bayseian Optimzation based robot autotunign module and domain randomizatoion.
