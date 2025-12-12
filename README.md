@@ -43,11 +43,11 @@ To improve robustness and further facilitate sim-to-real transfer, domain random
   <thead>
     <tr>
       <th>Domain Parameter</th>
-      <th>Applied Noise Distribution(deg)</th>
+      <th>Applied Noise Distribution</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>Object Initial Position</td><td>17.33</td></tr>
+    <tr><td>Object Initial Position</td><td>+𝒰(-0.02cm, 0.02cm)</td></tr>
     <tr><td>Object Position Observation Noise</td><td>9.71</td></tr>
     <tr><td>Joint Observation Noise</td><td>7.83</td</tr>
     <tr><td>Action Noise</td><td>4.76</td><td></tr>
