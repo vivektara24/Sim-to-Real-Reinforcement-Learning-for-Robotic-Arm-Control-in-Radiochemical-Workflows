@@ -33,7 +33,7 @@ The direct worklow in Isaac Lab is desinged to expose fine-grained control over 
 
 #### _Autotuned Robot Modeling_
 
-Two strategies are employed to address the real-to-sim gap: A Bayseian Optimzation based robot autotunign module and domain randomizatoion.
+To reduce 
 
 #### Domain Randomization
 
