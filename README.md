@@ -1,5 +1,7 @@
 # Sim-to-Real Reinforcement Learning for Robotic Arm Control in Radiochemical Workflows
 
+
+
 <p align="center">
   <img src="images/bnl_logo.png" alt="HIPPO Logo" height="120"/>
   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -95,7 +97,7 @@ _**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of th
   </tbody>
 </table>
 
-## Acknoledgments
+## Acknowledgements
 
 **This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
 
