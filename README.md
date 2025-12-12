@@ -80,6 +80,21 @@ The proposed autotuning approach resulted in a **31.4% reduction in total joint 
 _**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of the Lite6 joints._
 
 
+<table align="center">
+  <thead>
+    <tr>
+      <th>Trial 1</th>
+      <th>Trial 2</th>
+      <th>Trial 3</th>
+      <th>Trial 4</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>\frac{8}{10}</td><td>17.33</td><td>17.33</td><td>17.33</td></tr>
+  </tbody>
+</table>
+
 ## Acknoledgments
 
 **This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
