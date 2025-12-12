@@ -12,11 +12,20 @@ This study aims to train a robotic arm to perform a multip-step radiochemical se
 
 ## Methods
 
-#### _Simulation Enviroment Setup_
+#### _Simulation Enviroment_
 
 #### _Real-to-Sim Modeling_
 
+Two strategies are employed to address the real-to-sim gap: A Bayseian Optimzation based robot autotunign module and domain randomizatoion.
+
+
+
 #### _Problem Statement_
+
+This study solves the problem of Pick-and-Placed using the Soft Actor-Critic Deep Rienforcment Learning algorithm.
+
+Pick and place is one of the high-level robot manipulation tasks, which involves the robot manipulator picking up a specified object and brining it to a target location. We use the UFACTORY Lite6, a lightwieght 6-axis robot with a reach of 440mm, a 600g payload capaocity, and 0.5mm repeatability. We equipp the Lite 6 Gripper, a two-finger gripper featuring a 16mm stroke range and maximum payload < 1kg.
+
 
 #### _Proposed Solution_
 
