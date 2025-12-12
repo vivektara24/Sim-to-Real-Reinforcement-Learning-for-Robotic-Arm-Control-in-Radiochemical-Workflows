@@ -48,5 +48,8 @@ The approach yielded a 31.4% reduction in total joint position RMSE with improvm
 
 ## Acknoledgments
 
+**This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
+
+I would like to thank **Andrew Blades** for his contributions to this project and **Dr. Jayheon Do**, **Dr. Dohyun Kim**, and **Dr. Cathy Cutler** for the opportunity to contribute to this work.
 
 ## References
