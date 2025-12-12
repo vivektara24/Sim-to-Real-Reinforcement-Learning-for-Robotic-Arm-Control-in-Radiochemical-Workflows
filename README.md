@@ -1,9 +1,9 @@
 # Sim-to-Real Reinforcement Learning for Robotic Arm Control in Radiochemical Workflows
 
 <p align="center">
-  <img src="images/bnl_logo.png" alt="HIPPO Logo" height="120"/>
+  <img src="images/bnl_logo.png" alt="HIPPO Logo" height="100"/>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="images/hippo.png" alt="UW Medical Physics Logo" height="120"/>
+  <img src="images/hippo.png" alt="UW Medical Physics Logo" height="100"/>
 </p>
 
 ## Table of Contents
