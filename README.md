@@ -52,9 +52,9 @@ To improve robustness and further facilitate sim-to-real transfer, domain random
   </thead>
   <tbody>
     <tr><td>Object Initial Position</td><td>+𝒰(-0.02cm, 0.02cm)</td></tr>
-    <tr><td>Object Position Observation Noise</td><td>9.71</td></tr>
-    <tr><td>Joint Observation Noise</td><td>7.83</td</tr>
-    <tr><td>Action Noise</td><td>4.76</td><td></tr>
+    <tr><td>Object Position Observation Noise</td><td>+𝒰(0.00cm, 0.02cm)</td></tr>
+    <tr><td>Joint Observation Noise</td><td>+𝒰(0.00°, 5.73°)</td</tr>
+    <tr><td>Action Noise</td><td>+𝒰(0.00°, 5.73°)</td><td></tr>
   </tbody>
 </table>
 
