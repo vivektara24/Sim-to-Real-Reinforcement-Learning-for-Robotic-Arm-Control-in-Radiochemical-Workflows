@@ -61,10 +61,7 @@ To improve robustness and further facilitate sim-to-real transfer, domain random
 
 #### _Problem Statement_
 
-This study solves the problem of Pick-and-Placed using the Soft Actor-Critic Deep Rienforcment Learning algorithm.
-
-Pick and place is one of the high-level robot manipulation tasks, which involves the robot manipulator picking up a specified object and brining it to a target location. We use the UFACTORY Lite6, a lightwieght 6-axis robot with a reach of 440mm, a 600g payload capaocity, and 0.5mm repeatability. We equipp the Lite 6 Gripper, a two-finger gripper featuring a 16mm stroke range and maximum payload < 1kg.
-
+This study solves the problem of a Pick-and-Place using a the Soft Actor-Critic deep reinforcment learning algorithm.
 
 #### _Proposed Solution_
 
