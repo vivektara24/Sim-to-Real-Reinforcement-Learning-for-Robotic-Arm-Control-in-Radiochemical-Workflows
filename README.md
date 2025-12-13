@@ -130,7 +130,7 @@ The proposed autotuning approach resulted in a **31.4% reduction in total joint 
 
 _**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of the Lite6 joints._
 
-Performance across four independent trials is summarized in Table 2. Each trial reports the number of successful outcomes out of ten attempts, along with the mean success rate across all trials.
+Performance across four independent trials is summarized in Table 2. Each trial reports the number of successful outcomes out of ten attempts, where a succesfull outcome is defined as completion of the gripping subtask, along with the mean success rate across all trials.
 
 <table align="center">
   <thead>
