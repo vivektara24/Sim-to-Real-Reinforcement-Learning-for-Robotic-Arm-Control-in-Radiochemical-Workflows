@@ -102,10 +102,11 @@ The Lite 6 robot model used in this work, lacks actuated finger joints, preventi
 
 Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulation tasks. The manipulation object is a cube, modeled as a rigid body with a dimension of 27.8mm, mass of 600g, and coefficinet of static friction 1.0.The enviroment is defined without obstacles. At the start of each episode, both the position and orientation of the object are randomized to promote policy robustness.
 
-#### _Proposed Solution_
+#### _Soft Actor-Critic Architecture_
 
-We consider an infinite-horizon Markov decision process (MDP), defined by the tuple (`𝓜 = (𝓢, 𝓐, p, r)`
-)
+_Notation_
+
+We consider an infinite-horizon Markov decision process (MDP), defined by the tuple `𝓜 = (𝓢, 𝓐, p, r)`, where the state space `𝓢` and the action space `𝓐` are continous, and the unknown state space transition probablity `p : 𝓢 x 𝓢 x 𝓐 → [0, ∞)` represents the probability density of the next state `sₜ₊₁ ∈ S` given the current state `sₜ₊₁ ∈ S` and action `aₜ ∈ 𝓐`. The enviroment emits a bound reward `r : 𝓢 x 𝓐 → [rₘᵢₙ, rₘₐₓ]`
 
 
 ## Results
