@@ -96,9 +96,14 @@ To improve robustness and further facilitate sim-to-real transfer, domain random
 
 #### _Problem Statement_
 
-This study solves the problem of a Pick-and-Place using a the Soft Actor-Critic deep reinforcment learning algorithm.
+This study solves the problem of a Pick-and-Place task using a deep reinforcment learning algorithm. Pick-and-Place is a high-level robot manipulation task, which involves the robot manipulator picking up a specific object and bringing it to a target location. The task is decomposed into a sequence of subtasks, with the reward function transitioning between stages upon completion of each preceding subtask. The enviroment is defined without obstacles. 
+
+The Lite 6 robot model used in this work, lacks actuated finger joints, preventing the simulation of a full grasp-and-release cycle. As a result task success is defined by successful completion of the grasping subtask, operationalized as positioning the object within the gripper's effective grasp radius.
+
+Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulation tasks. The manipulation object is a cube, modeled as a rigid body with a dimension of 27.8mm, mass of 600g, and coefficinet of static friction 1.0.The enviroment is defined without obstacles. At the start of each episode, both the position and orientation of the object are randomized to promote policy robustness.
 
 #### _Proposed Solution_
+
 
 
 
