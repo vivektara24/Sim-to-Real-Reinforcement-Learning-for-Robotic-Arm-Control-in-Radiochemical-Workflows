@@ -104,7 +104,8 @@ Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulati
 
 #### _Proposed Solution_
 
-
+We consider an infinite-horizon Markov decision process (MDP), defined by the tuple (`𝓜 = (𝓢, 𝓐, p, r)`
+)
 
 
 ## Results
