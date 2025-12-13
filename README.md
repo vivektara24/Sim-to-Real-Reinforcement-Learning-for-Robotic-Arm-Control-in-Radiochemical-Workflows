@@ -15,9 +15,9 @@
 
 ## Introduction
 
-Nuclear medicine is the most rapidly expanding area of radionuclide use, driving an increased demand for efficient, reliable, and scalable methods for radiopharmecutical production. Automation of chemical workflows offers a powerful means to meet these demands and accelerate discoveries. Rapid advances in artificial intelligence (AI) have opened new avenues to for optimizing these workflows, enabling data-driven decision-making and shortening development cycles.
+Nuclear medicine is the most rapidly expanding area of radionuclide use, driving an increased demand for efficient, reliable, and scalable methods for radiochemical seperations and radiopharmecutical production. Automation of chemical workflows offers a powerful means to meet these demands and accelerate discoveries. Rapid advances in artificial intelligence (AI) have opened new avenues to for optimizing these workflows, enabling data-driven decision-making and shortening development cycles.
 
-Robots were originally designed to assist or replace humans by performing repetitive, hazardous, or physically demanding, particularly in enviroments that impose limitations on human operations. A central goal of robotics research is to endow machines with human-like motor capabilites that enable smooth, adaptive, and natural interactions with their enviroment. Reinforcment learning (RL) provides a powerful framework for achieving this goal by enabling a robot to autonomously learn optimal behavior through trial-and-error interactions with its enviroment, driven by reward functions that encode task objectives.
+Robots were originally designed to assist or replace humans by performing repetitive, hazardous, or physically demanding tasks, particularly in enviroments that impose limitations on human operations. A central goal of robotics research is to endow machines with human-like motor capabilites that enable smooth, adaptive, and natural interactions with their enviroment. Reinforcment learning (RL) provides a powerful framework for achieving this goal by enabling a robot to autonomously learn optimal behavior through trial-and-error interactions with its enviroment, driven by reward functions that encode task objectives.
 
 Simulators offer virtually unlimited tiral-and-error chances to perform the exploartion neccesary for RL. However, the successful transfer of policies learned in simulation to real-world robotic systems critically depends on accurate modeling of both robots and the enviroments they interact with. Manufacturer supplied robot models offer a baseline, but often require significant tuning to be ready for sim-to-real. 
 
@@ -25,15 +25,31 @@ This study investigates the use of deep rienforcment learning to train a robotic
 
 ## Methods
 
-#### _Simulation Enviroment_
+#### _Isaac Lab Simulation Enviroment_
 
-Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. Isaac Lab offers a simulation framework 
+Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. To address these limitations, this work leverages Isaac Lab, an open source simulation framework built on NVIDIA Isaac Sim. Isaac Lab combines RTX rendering for photorealistic, scalable visuals with PhysX for high-fidelity physics simulation. It uses Universal Scene Description (USD) as the core data layer for structed world authoring. Together, these capabilities scale efficiently across multi-GPU and multi-node setups. At it's core, Isaac Lab designs a manager-based API that organizes enviorment design into reusable and composable components, allowing consistent workflows across diverse research projects. Key features include integration of non-linear actuator models, multi-frequency custom sensor simulation, interfaces for low-level controllers, and tools for procedural enviorment genration and domain randomization.
 
-The direct worklow in Isaac Lab is desinged to expose fine-grained control over simulation and learning pipleines
+_USD for Robotics_
+
+Open Universal Scene Description (OpenUSD) is an open-source format for robust and scalable authoring of complex 3D scenes composed of numerous elements. It provides a comprehensive set of tools and Python/C++ APIs to define, organize, and edit 3D data. USD represents a 3D scene as a hierarcal scene graph, with data arranged in namespaces of primitives. This scene graph is parsed into PhysX, which allocated GPU tensors representing the interal simulation state. OmniPhysics exposes these states through teh View APIs which allow read or write access to subsets of objects in the scene while simplifiying data mangenemtn and improving usability.
+
+A key development from the Alliance for OpenUSD (AOUSD) organization is the USDPhysics Schema, which extends OpenUSD with a standardized way to describe physical properties such as rigid bodies, collisions, joints, and materials and interpret scenes consistently across different engines and workflows. By providing a common representation representation for physics simulation, it enables robotics and simulation tools to share and interpret scenes consistently across different engines and workflows. However, OpenUSD also allows straightforward extention with engine-specific schemas; the PhysxSchema provides paratmers used in NVIDIA PhysX.
+
+Beyond physics, OpenUSD provides complementary schemas that enrich how scenes can be represented and eexhanged across domains. For example the semantics schema annotates prims with categorical lables, enabling tasks in perception and learning. Camera prims allow the description of virtual sensors directly with a scene, ensuring that viewpoints and sensor models are preserved consistently across tools. Similarly Material schemas caputer surface properties in a standardized way, briding the needs fo both rendering and physics. These schemas unify geometery, dynamics, semantics, sensing, and apperance within a single scene description. The integrated representation overcomes the limitations of existitng robotics formats such as MJCF (physics-focused, limits scene richness) and URDF (kinematics/dynamics with Gazebo-specific tags for sensors).
+
+Isaac Lab provided USD converters for widley used formats including URDF, MJCF, and meshes (e.g., OBJ, DAE).
+
+_Physics Simulation_
+
+The NVIDIA PhysX SDK is an open-source, multi-physics simulation engine desinged to meet the demainding needs for robotics and industrial applications. It supports a wide range of simulation types, from rigid and articulated bodies to deformable bodies such as cloth, fluids, and soft bodies. These simulation objects can interact with each other throug htwo-way coupling between specialized solvers, enabling efficient and accurate mixed-physics interactions.
+
+PhysX can run on both CPU and GPU, providing flexibility for different simulation senarios. PhysX's Direct-GPU API provides direct read and write access to simulation state and control data in GPU memory. The resulting CUDA tensors can then be processed efficiently using user-defined GPU kernels for downstream applications, such as computing observations for robotics learning workflows. This end-to-end GPU pipeline eliminates the performance bottlenecks from CPU-GPU data transfers seen in traditional simulators.
+
+NVIDIA Omniverse Physics (OmniPhysics) serves as the integration layer for the PhysX simulation engine within NVIDIA Omniverse
 
 #### _Autotuned Robot Modeling_
 
-To reduce the sim-to-real gap prior to learning a policy, an automated physics-parameter tuning framework based on Bayesian optimzation was developed. The Optuna hyperparameter optimzation library was employted to systematically calibrate key low-level physical parameters of the simulated Lite6 robot model. These parameters included joint friction coefficients, joint damping constants, and joint aramture values, which influence robot dynamics but were initially poorly speciifed by the manufacturer. Joint stiffness was set to zero to enable joint velocity control, consistent with recommendations in the Isaac Lab documentation.
+To reduce the sim-to-real gap prior to learning a policy, an automated physics-parameter tuning framework based on Bayesian optimzation was developed. The Optuna hyperparameter optimzation library was employted to systematically calibrate key low-level physical parameters of the simulated Lite6 robot model. These parameters included joint friction coefficients, joint damping constants, and joint aramture values, which influence robot dynamics but were initially poorly speciifed by the manufacturer. Joint stiffness was set to zero to enable joint velocity control, consistent with recommendations in the Isaac Lab documentation. 
 
 The autotuning produceure begins by collecting joint-level trajectores including positions, velocities, and torques, from real-world motion dmeostrations performed on the physical Lite6 robot arm. For each optimization trial, the same control policy is executed in simulation using a candidate set of physics parameters. The mean square error (MSE) between real and simulated joint trajectories is computed and used as the optimization objective. Optuna iterativley proposes parameter updates to minimize this error, yielding a set of physics paramters that best reproduce the observed real-world behavior.
 
