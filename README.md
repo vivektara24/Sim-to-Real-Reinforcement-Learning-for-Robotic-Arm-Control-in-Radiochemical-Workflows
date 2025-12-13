@@ -61,6 +61,11 @@ _Actuators_
 
 In Isaac Lab, actuators are the interface between desired joint actions and articulation motion.
 
+#### Robot Platform
+
+We use the UFACTORY Lite 6, a 6-degree-of-freedom (DoF) lightweight robotic arm with fully actuated joints, a 440mm reach, 600g payuload, capacity, repeatability of ±0.5mm, and an ISO 9409-1 compliant parallel gripper.
+
+
 #### _Autotuned Robot Modeling_
 
 To reduce the sim-to-real gap prior to learning a policy, an automated physics-parameter tuning framework based on Bayesian optimzation was developed. The Optuna hyperparameter optimzation library was employted to systematically calibrate key low-level physical parameters of the simulated Lite6 robot model. These parameters included joint friction coefficients, joint damping constants, and joint aramture values, which influence robot dynamics but were initially poorly speciifed by the manufacturer. Joint stiffness was set to zero to enable joint velocity control, consistent with recommendations in the Isaac Lab documentation. 
