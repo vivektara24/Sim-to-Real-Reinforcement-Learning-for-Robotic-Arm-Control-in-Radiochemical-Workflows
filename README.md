@@ -107,10 +107,6 @@ Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulati
 We consider an infinite-horizon Markov decision process (MDP), defined by the tuple 𝓜 = (𝓢, 𝓐, p, r), where the state space 𝓢 and the action space 𝓐 are continous, and the unknown state space transition probablity p : 𝓢 x 𝓢 x 𝓐 → [0, ∞) represents the probability density of the next state sₜ₊₁ ∈ S given the current state sₜ₊₁ ∈ S and action aₜ ∈ 𝓐. The enviroment emits a bound reward r : 𝓢 x 𝓐 → [rₘᵢₙ, rₘₐₓ] on each transition. We will use ρᵖ(sₜ) and ρᵖ(sₜ, aₜ) to denote the state and state–action marginals of the trajectory distribution induced by a policy π(aₜ | sₜ).
 
 
-
-
-## Results
-
 ## Results
 
 The proposed autotuning approach resulted in a **31.4% reduction in total joint position RMSE**, with improvements observed across all six joints. Joint-wise RMSE values before and after tuning are summarized in Table 1.
