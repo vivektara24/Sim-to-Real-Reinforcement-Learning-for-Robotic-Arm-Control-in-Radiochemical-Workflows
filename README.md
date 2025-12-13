@@ -45,7 +45,21 @@ The NVIDIA PhysX SDK is an open-source, multi-physics simulation engine desinged
 
 PhysX can run on both CPU and GPU, providing flexibility for different simulation senarios. PhysX's Direct-GPU API provides direct read and write access to simulation state and control data in GPU memory. The resulting CUDA tensors can then be processed efficiently using user-defined GPU kernels for downstream applications, such as computing observations for robotics learning workflows. This end-to-end GPU pipeline eliminates the performance bottlenecks from CPU-GPU data transfers seen in traditional simulators.
 
-NVIDIA Omniverse Physics (OmniPhysics) serves as the integration layer for the PhysX simulation engine within NVIDIA Omniverse
+NVIDIA Omniverse Physics (OmniPhysics) serves as the integration layer for the PhysX simulation engine within NVIDIA Omniverse. It extends the OpenUSD framework by introducing user-defined data types under PhysxSchema, which enables representation and control of physics simulations. OmniPhysics parses these attributes from USD, maps them into PhysX, runs the simulation, and writes the simulation output back to USD. It also supports state updates by monitoring changes in USD and updating the active simulation accordingly.
+
+Where high-performance and large-scale simulation scenes are required, the USD read-write cycle during simulation is often a performance bottleneck and is therefore bypassed. Instead, the simulation data is accessed through OmniPhysics Tensor APIs, which internally rely on PhysX Direct GPU APIs. For workflows that require rendering, such as vision-in-the-loop training, OmniPhysics also maintains efficient synchronization between the simulation state and the renderer.
+
+_Assets_
+
+Assets correspond to any physics-enabled object that can be added to the simulation. These include rigid objects, articulations, and deformable objects. Each asset provides a high-level interface that wraps around low-level USD and OmniPhysics View APIs. Although the underlying TensorAPI views expose direct read and write access to simulation data, Isaac Lab introduces the additional abstraction layer to ensure a unified and reliable way of interacting with the simulation.
+
+The asset interface consolidates attributes that are not directly managed by TensorAPIs but are essential for robotics. 
+
+Additionally the interface employs a lazy-update mechanism for simulation state retrieval. With the lazy-update approach, data for each attribute is fetched only upon its first access after a simulation step, and subsequent acceses within the same step use the cached values.
+
+_Actuators_
+
+In Isaac Lab, actuators are the interface between desired joint actions and articulation motion.
 
 #### _Autotuned Robot Modeling_
 
@@ -53,7 +67,7 @@ To reduce the sim-to-real gap prior to learning a policy, an automated physics-p
 
 The autotuning produceure begins by collecting joint-level trajectores including positions, velocities, and torques, from real-world motion dmeostrations performed on the physical Lite6 robot arm. For each optimization trial, the same control policy is executed in simulation using a candidate set of physics parameters. The mean square error (MSE) between real and simulated joint trajectories is computed and used as the optimization objective. Optuna iterativley proposes parameter updates to minimize this error, yielding a set of physics paramters that best reproduce the observed real-world behavior.
 
-This approach enables fully automated identification of realistic simulation paramters, imporving correspondance between simulation and physical execution reducing the real-to-sim gap.
+This approach enables fully automated identification of realistic simulation paramters, improving correspondance between simulation and physical execution reducing the real-to-sim gap.
 
 #### Domain Randomization
 
@@ -131,6 +145,6 @@ _**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of th
 
 **This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
 
-I would like to thank **Andrew Blades** for his contributions to this project and **Dr. Jayheon Do**, **Dr. Dohyun Kim**, and **Dr. Cathy Cutler** for the opportunity to contribute to this work.
+I would like to thank **Andrew Blades** for his contributions to this project and **Dr. Jayheon Do**, **Dr. Dohyun Kim**, and Dr. Cathy Cutler for the opportunity to contribute to this work.
 
 ## References
