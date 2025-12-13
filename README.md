@@ -110,7 +110,7 @@ We consider an infinite-horizon Markov decision process (MDP), defined by the tu
 
 _Maximum Entropy Reinforcment Learning_
 
-Standard RL maximizes the expected sum of rewards ∑ₜ 𝔼_{(sₜ, aₜ) ∼ ρ_π} [ r(sₜ, aₜ) ]
+Standard RL maximizes the expected sum of rewards ∑ₜ 𝔼₍ₛₜ,ₐₜ₎∼ᵨ_π [ r(sₜ, aₜ) ].
 
 
 ## Results
