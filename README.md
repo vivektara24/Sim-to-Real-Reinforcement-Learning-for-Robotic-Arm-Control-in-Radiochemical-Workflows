@@ -49,17 +49,6 @@ NVIDIA Omniverse Physics (OmniPhysics) serves as the integration layer for the P
 
 Where high-performance and large-scale simulation scenes are required, the USD read-write cycle during simulation is often a performance bottleneck and is therefore bypassed. Instead, the simulation data is accessed through OmniPhysics Tensor APIs, which internally rely on PhysX Direct GPU APIs. For workflows that require rendering, such as vision-in-the-loop training, OmniPhysics also maintains efficient synchronization between the simulation state and the renderer.
 
-_Assets_
-
-Assets correspond to any physics-enabled object that can be added to the simulation. These include rigid objects, articulations, and deformable objects. Each asset provides a high-level interface that wraps around low-level USD and OmniPhysics View APIs. Although the underlying TensorAPI views expose direct read and write access to simulation data, Isaac Lab introduces the additional abstraction layer to ensure a unified and reliable way of interacting with the simulation.
-
-The asset interface consolidates attributes that are not directly managed by TensorAPIs but are essential for robotics. 
-
-Additionally the interface employs a lazy-update mechanism for simulation state retrieval. With the lazy-update approach, data for each attribute is fetched only upon its first access after a simulation step, and subsequent acceses within the same step use the cached values.
-
-_Actuators_
-
-In Isaac Lab, actuators are the interface between desired joint actions and articulation motion.
 
 #### Robot Platform
 
@@ -101,16 +90,6 @@ This study solves the problem of a Pick-and-Place task using a deep reinforcment
 The Lite 6 robot model used in this work, lacks actuated finger joints, preventing the simulation of a full grasp-and-release cycle. As a result task success is defined by successful completion of the grasping subtask, operationalized as positioning the object within the gripper's effective grasp radius.
 
 Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulation tasks. The manipulation object is a cube, modeled as a rigid body with a dimension of 27.8mm, mass of 600g, and coefficinet of static friction 1.0.The enviroment is defined without obstacles. At the start of each episode, both the position and orientation of the object are randomized to promote policy robustness.
-
-#### _Soft Actor-Critic Architecture_
-
-_Notation_
-
-We consider an infinite-horizon Markov decision process (MDP), defined by the tuple 𝓜 = (𝓢, 𝓐, p, r), where the state space 𝓢 and the action space 𝓐 are continous, and the unknown state space transition probablity p : 𝓢 x 𝓢 x 𝓐 → [0, ∞) represents the probability density of the next state sₜ₊₁ ∈ S given the current state sₜ₊₁ ∈ S and action aₜ ∈ 𝓐. The enviroment emits a bound reward r : 𝓢 x 𝓐 → [rₘᵢₙ, rₘₐₓ] on each transition. We will use ρᵖ(sₜ) and ρᵖ(sₜ, aₜ) to denote the state and state–action marginals of the trajectory distribution induced by a policy π(aₜ | sₜ).
-
-_Maximum Entropy Reinforcment Learning_
-
-
 
 ## Results
 
