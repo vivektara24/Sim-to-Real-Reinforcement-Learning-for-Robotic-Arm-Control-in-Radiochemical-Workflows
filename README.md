@@ -1,5 +1,8 @@
 # Sim-to-Real Reinforcement Learning for Robotic Arm Control in Radiochemical Workflows
 
+**This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
+
+
 <p align="center">
   <img src="images/bnl_logo.png" alt="HIPPO Logo" height="100"/>
   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -70,7 +73,7 @@ This approach enables fully automated identification of realistic simulation par
 
 #### Domain Randomization
 
-To improve robustness and further facilitate sim-to-real transfer, domain randomization was applied throughout training. Variability was introduced across object properties, sensory observations, and control actions to expose the the policy to a diverse range of operating conditions. This strategy encourages the learned policy to generalize beyond a single nominal simulation configuration. The specified randomized parameters and their associated noise distributions are summarized in Table 3.
+To improve robustness and further facilitate sim-to-real transfer, domain randomization was applied throughout training. Variability was introduced across object properties, sensory observations, and control actions to expose the the policy to a diverse range of operating conditions. This strategy encourages the learned policy to generalize beyond a single nominal simulation configuration. The specified randomized parameters and their associated noise distributions are summarized in Table 1.
 
 <table align="center">
   <thead>
@@ -82,23 +85,25 @@ To improve robustness and further facilitate sim-to-real transfer, domain random
   <tbody>
     <tr><td>Object Initial Position</td><td>+𝒰(-0.02cm, 0.02cm)</td></tr>
     <tr><td>Object Position Observation Noise</td><td>+𝒰(0.00cm, 0.02cm)</td></tr>
-    <tr><td>Joint Observation Noise</td><td>+𝒰(0.00°, 5.73°)</td</tr>
+    <tr><td>Joint Observation Noise</td><td>+𝒰(0.00°, 5.73°)</td></tr>
     <tr><td>Action Noise</td><td>+𝒰(0.00°, 5.73°)</td><td></tr>
   </tbody>
 </table>
 
+_**Table 1**. Domain randomization parameters and associated noise distributions applied during policy training._
+
 
 #### _Problem Statement_
 
-This study solves the problem of a Pick-and-Place task using a deep reinforcment learning algorithm. Pick-and-Place is a high-level robot manipulation task, which involves the robot manipulator picking up a specific object and bringing it to a target location. The task is decomposed into a sequence of subtasks, with the reward function transitioning between stages upon completion of each preceding subtask. The enviroment is defined without obstacles. 
+This study addresses the problem of a Pick-and-Place task using the Soft Actor-Critic (SAC) deep reinforcement learning algorithm. Pick-and-Place is a high-level robot manipulation task, which involves the robotic manipulator picking up a specified object and transporting it to a given target location. Following the task decomposition proposed by Kim et al. (2023), the task is structured as a sequence of subtasks--reaching, grasping, and placing. However, rather than training seperate policies for each stage, a single policy is learned using a stage-based reward formulation in which the reward function transitions upon successful completion of each preceding subtask.
 
 The Lite 6 robot model used in this work, lacks actuated finger joints, preventing the simulation of a full grasp-and-release cycle. As a result task success is defined by successful completion of the grasping subtask, operationalized as positioning the object within the gripper's effective grasp radius.
 
-Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulation tasks. The manipulation object is a cube, modeled as a rigid body with a dimension of 27.8mm, mass of 600g, and coefficinet of static friction 1.0.The enviroment is defined without obstacles. At the start of each episode, both the position and orientation of the object are randomized to promote policy robustness.
+Isaac Lab's Seattle Lab Table serves as the primary workspace for all manipulation tasks. The manipulation object is a cube, modeled as a rigid body with a dimension of 27.8mm, mass of 600g, and coefficient of static friction 1.0. The enviroment is defined without obstacles.
 
 ## Results
 
-The proposed autotuning approach resulted in a **31.4% reduction in total joint position RMSE**, with improvements observed across all six joints. Joint-wise RMSE values before and after tuning are summarized in Table 1.
+The proposed autotuning approach resulted in a **31.4% reduction in total joint position RMSE**, with improvements observed across all six joints. Joint-wise RMSE values pre- and post-tuning are summarized in Table 2.
 
 
 <table align="center">
@@ -120,9 +125,9 @@ The proposed autotuning approach resulted in a **31.4% reduction in total joint 
   </tbody>
 </table>
 
-_**Table 1**. Joint position RMSE (degrees) pre- and post- tuning for each of the Lite6 joints._
+_**Table 2**. Joint position RMSE (degrees) pre- and post-tuning for each of the Lite6 joints._
 
-Performance across four independent trials is summarized in Table 2. Each trial reports the number of successful outcomes out of ten attempts, where a succesfull outcome is defined as completion of the gripping subtask, along with the mean success rate across all trials.
+Performance across four independent trials is summarized in Table 3. Each trial reports the number of successful outcomes out of ten attempts, where a successful outcome is defined as completion of the gripping subtask, along with the mean success rate across all trials.
 
 <table align="center">
   <thead>
@@ -139,16 +144,23 @@ Performance across four independent trials is summarized in Table 2. Each trial 
   </tbody>
 </table>
 
-_**Table 2**. Grasping success rate across four independent trials._
-
-Table 1. Success rate across four independent trials, reported as successful outcomes out of ten attempts per trial. The average success rate across all trials is also shown.
+_**Table 3**. Grasping success rate across four independent trials._
 
 ## Acknowledgements
 
-**This material is based upon work supported by the U.S Department of Energy, Office of Science, Isotope Program, under Award Number DE-SC0022550 through the Horizon-broadening Isotope Production Pipeline Opportunities (HIPPO) program.**
-
-I would like to thank **Andrew Blades** for his contributions to this project and **Dr. Jayheon Do**, **Dr. Dohyun Kim**, and Dr. Cathy Cutler for the opportunity to contribute to this work.
+I would like to thank **Andrew Blades** for his contributions to this project and **Dr. Jayheon Do**, **Dr. Dohyun Kim**, and **Dr. Cathy Cutler** for the opportunity to contribute to this work.
 
 ## References
 
-
+1. Ajani, O. S., Hur, S., & Mallipeddi, R. (2023). Evaluating domain randomization in deep reinforcement learning locomotion tasks. Mathematics, 11(23), 4744. https://doi.org/10.3390/math11234744
+2. Almeida, M. O., Davis, I. S., & Lopes, A. D. (2015). Biomechanical Differences of Foot-Strike Patterns during Running: A Systematic Review with meta-analysis. Journal of Orthopaedic and Sports Physical Therapy, 45(10), 738–755. https://doi.org/10.2519/jospt.2015.6019
+3. Brunke, L., Greeff, M., Hall, A. W., Yuan, Z., Zhou, S., Panerati, J., & Schoellig, A. P. (2022). Safe learning in Robotics: From Learning-Based Control to Safe Reinforcement Learning. Annual Review of Control Robotics and Autonomous Systems, 5(1), 411–444. https://doi.org/10.1146/annurev-control-042920-020211
+4. Kim, B., Kwon, G., Park, C., & Kwon, N. K. (2023). The task Decomposition and dedicated Reward-System-Based Reinforcement learning algorithm for Pick-and-Place. Biomimetics, 8(2), 240. https://doi.org/10.3390/biomimetics8020240
+5. Kormushev, P., Calinon, S., & Caldwell, D. (2013). Reinforcement Learning in Robotics: Applications and Real-World challenges. Robotics, 2(3), 122–148. https://doi.org/10.3390/robotics2030122
+6. Liu, R., Nageotte, F., Zanne, P., De Mathelin, M., Dresp-Langley, B., Liu, R., Nageotte, F., Zanne, P., De Mathelin, M., & Dresp-Langley, B. (2021). Deep Reinforcement Learning for the Control of Robotic Manipulation: A Focussed Mini-Review. Robotics, 10(1), 22. https://doi.org/10.3390/robotics10010022
+7. Madanchian, M., & Taherdoost, H. (2025). The impact of artificial intelligence on research efficiency. Results in Engineering, 26, 104743. https://doi.org/10.1016/j.rineng.2025.104743
+8. Nvidia, Mittal, M., Roth, P., Tigue, J., Richard, A., Zhang, O., Du, P., Serrano-Muñoz, A., Yao, X., Zurbrügg, R., Rudin, N., Wawrzyniak, L., Rakhsha, M., Denzler, A., Heiden, E., Borovicka, A., Ahmed, O., Akinola, I., Anwar, A., . . . Sheng, S. (2025). Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning. arXiv (Cornell University). http://arxiv.org/abs/2511.04831
+9. Singh, B., Kumar, R., & Singh, V. P. (2021). Reinforcement learning in robotic applications: a comprehensive survey. Artificial Intelligence Review, 55(2), 945–990. https://doi.org/10.1007/s10462-021-09997-9
+10. Tobin, J., Fong, R., Ray, A., Schneider, J., Zaremba, W., & Abbeel, P. (2017). Domain randomization for transferring deep neural networks from simulation to the real world. IEEE RSJ International Conference on Intelligent Robots and Systems (IROS), 23–30. https://doi.org/10.1109/iros.2017.8202133
+11. Yewale, A., Yang, Y., Nazemifard, N., Papageorgiou, C. D., Rielly, C. D., & Benyahia, B. (2025). Deep reinforcement Learning-Based Self-Optimization of flow chemistry. ACS Engineering Au, 5(3), 247–266. https://doi.org/10.1021/acsengineeringau.5c00004
+12. Zhang, F., Leitner, J., Milford, M., Upcroft, B., & Corke, P. I. (2015). Towards vision-based deep reinforcement learning for robotic motion control. QUT ePrints (Queensland University of Technology). https://eprints.qut.edu.au/92332/21/pap168.pdf
