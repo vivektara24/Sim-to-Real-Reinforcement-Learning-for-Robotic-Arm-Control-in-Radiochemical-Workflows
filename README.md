@@ -19,18 +19,18 @@ Nuclear medicine is the most rapidly expanding area of radionuclide use, driving
 
 Robots were originally designed to assist or replace humans by performing repetitive, hazardous, or physically demanding tasks, particularly in enviroments that impose limitations on human operation. A central goal of robotics research is to endow machines with human-like motor capabilites that enable smooth, adaptive, and natural interactions with their enviroment (Kormushev et al., 2013; Liu et al. 2020). Reinforcment learning (RL) provides a powerful framework for achieving this goal by enabling a robot to autonomously learn optimal behavior through trial-and-error interactions with its enviroment, driven by reward functions that encode task objectives (Brunke et. al, 2022; Zhang et. al, 2015).
 
-Simulators offer virtually unlimited trial-and-error chances to perform the exploartion neccesary for RL. However, the successful transfer of policies learned in simulation to real-world robotic systems critically depends on accurate modeling of both robots and the enviroments they interact with. Manufacturer supplied robot models offer a baseline, but often require significant tuning to be ready for sim-to-real transfer. 
+Simulators offer virtually unlimited trial-and-error chances to perform the exploartion neccesary for RL. However, the successful transfer of policies learned in simulation to real-world robotic systems critically depends on accurate modeling of both robots and the enviroments they interact with (Tobin et al., 2017, Ajani et al., 2023). Manufacturer supplied robot models offer a baseline, but often require significant tuning to be ready for sim-to-real transfer (Lin et al., 2025). 
 
 This study investigates the use of deep rienforcment learning to train a robotic manipulator to perform a multi-step radiochemical seperation workflow. As an initial step, the Soft Actor-Critic (SAC) algorithm is implemented to learn a policy for robust pick-and-place operations within NVIDIA's Isaac Lab simulation framework. To mitigate the sim-to-real gap, we extend prior work on parallized autotuning by integrating Bayesian optimization to directly minimze tracking error. Additionally, domain randomization is employed to improve policy robustness to agianst the inherent sim-to-real gap.
 
 ## Methods
 
 
-
 #### _Isaac Lab Simulation Enviroment_
 
-> **Note:** The following section is adapted from the Isaac Lab documentation and associated publication by NVIDIA. It is included here to provide background context on the simulation framework used in this project. See the original source for full details:  
+> **Note:** The following sections are adapted from the Isaac Lab documentation and associated publication by NVIDIA. It is included here to provide background context on the simulation framework used in this project. See the original source for full details:  
 > https://github.com/NVIDIA-Omniverse/IsaacLab
+> Nvidia, Mittal, M., Roth, P., Tigue, J., Richard, A., Zhang, O., Du, P., Serrano-Muñoz, A., Yao, X., Zurbrügg, R., Rudin, N., Wawrzyniak, L., Rakhsha, M., Denzler, A., Heiden, E., Borovicka, A., Ahmed, O., Akinola, I., Anwar, A., . . . Sheng, S. (2025). Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning. arXiv (Cornell University). http://arxiv.org/abs/2511.04831
 
 Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. To address these limitations, this work leverages Isaac Lab, an open source simulation framework built on NVIDIA Isaac Sim. Isaac Lab combines RTX rendering for photorealistic, scalable visuals with PhysX for high-fidelity physics simulation. It uses Universal Scene Description (USD) as the core data layer for structed world authoring. Together, these capabilities scale efficiently across multi-GPU and multi-node setups. At it's core, Isaac Lab defines a manager-based API that organizes enviorment design into reusable and composable components, allowing consistent workflows across diverse research projects. Key features include integration of non-linear actuator models, multi-frequency custom sensor simulation, interfaces for low-level controllers, and tools for procedural enviorment genration and domain randomization.
 
