@@ -15,9 +15,9 @@
 
 ## Introduction
 
-Nuclear medicine is the most rapidly expanding area of radionuclide use, driving an increased demand for efficient, reliable, and scalable methods for radiochemical seperations and radiopharmecutical production. Automation of chemical workflows offers a powerful means to meet these demands and accelerate discoveries. Rapid advances in artificial intelligence (AI) have opened new avenues to for optimizing these workflows, enabling data-driven decision-making and shortening development cycles.
+Nuclear medicine is the most rapidly expanding area of radionuclide use, driving an increased demand for efficient, reliable, and scalable methods for radiochemical seperations and radiopharmecutical production (Loveland et al., 2017). Automation of chemical workflows offers a powerful means to meet these demands and accelerate discoveries. Rapid advances in artificial intelligence (AI) have opened new avenues to for optimizing these workflows, enabling data-driven decision-making and shortening development cycles (Madanchian & Taherdoost, 2025).
 
-Robots were originally designed to assist or replace humans by performing repetitive, hazardous, or physically demanding tasks, particularly in enviroments that impose limitations on human operation. A central goal of robotics research is to endow machines with human-like motor capabilites that enable smooth, adaptive, and natural interactions with their enviroment. Reinforcment learning (RL) provides a powerful framework for achieving this goal by enabling a robot to autonomously learn optimal behavior through trial-and-error interactions with its enviroment, driven by reward functions that encode task objectives.
+Robots were originally designed to assist or replace humans by performing repetitive, hazardous, or physically demanding tasks, particularly in enviroments that impose limitations on human operation. A central goal of robotics research is to endow machines with human-like motor capabilites that enable smooth, adaptive, and natural interactions with their enviroment (Kormushev et al., 2013; Liu et al. 2020). Reinforcment learning (RL) provides a powerful framework for achieving this goal by enabling a robot to autonomously learn optimal behavior through trial-and-error interactions with its enviroment, driven by reward functions that encode task objectives (Brunke et. al, 2022; Zhang et. al, 2015).
 
 Simulators offer virtually unlimited trial-and-error chances to perform the exploartion neccesary for RL. However, the successful transfer of policies learned in simulation to real-world robotic systems critically depends on accurate modeling of both robots and the enviroments they interact with. Manufacturer supplied robot models offer a baseline, but often require significant tuning to be ready for sim-to-real transfer. 
 
@@ -25,7 +25,12 @@ This study investigates the use of deep rienforcment learning to train a robotic
 
 ## Methods
 
+
+
 #### _Isaac Lab Simulation Enviroment_
+
+> **Note:** The following section is adapted from the Isaac Lab documentation and associated publication by NVIDIA. It is included here to provide background context on the simulation framework used in this project. See the original source for full details:  
+> https://github.com/NVIDIA-Omniverse/IsaacLab
 
 Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. To address these limitations, this work leverages Isaac Lab, an open source simulation framework built on NVIDIA Isaac Sim. Isaac Lab combines RTX rendering for photorealistic, scalable visuals with PhysX for high-fidelity physics simulation. It uses Universal Scene Description (USD) as the core data layer for structed world authoring. Together, these capabilities scale efficiently across multi-GPU and multi-node setups. At it's core, Isaac Lab defines a manager-based API that organizes enviorment design into reusable and composable components, allowing consistent workflows across diverse research projects. Key features include integration of non-linear actuator models, multi-frequency custom sensor simulation, interfaces for low-level controllers, and tools for procedural enviorment genration and domain randomization.
 
