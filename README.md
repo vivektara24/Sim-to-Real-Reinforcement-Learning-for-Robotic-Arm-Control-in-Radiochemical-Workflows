@@ -37,7 +37,7 @@ This study investigates the use of deep reinforecment learning to train the UFAC
 
 Training reinforcement learning policies on physical robots is impractible due to time, wear, and saftey constraints. To address these limitations, this work leverages Isaac Lab, an open source simulation framework built on NVIDIA Isaac Sim. Isaac Lab combines RTX rendering for photorealistic, scalable visuals with PhysX for high-fidelity physics simulation. It uses Universal Scene Description (USD) as the core data layer for structed world authoring. Together, these capabilities scale efficiently across multi-GPU and multi-node setups. At it's core, Isaac Lab defines a manager-based API that organizes enviorment design into reusable and composable components, allowing consistent workflows across diverse research projects. Key features include integration of non-linear actuator models, multi-frequency custom sensor simulation, interfaces for low-level controllers, and tools for procedural enviorment genration and domain randomization.
 
-_USD for Robotics_
+**_USD for Robotics_**
 
 Open Universal Scene Description (OpenUSD) (Pixar Animation Studios, 2016) is an open-source format for authoring of complex 3D scenes composed of numerous elements. It provides a comprehensive set of tools and Python/C++ APIs to define, organize, and edit 3D data. USD represents a 3D scene as a hierarchical scene graph. Assets, or physics-enabled objects in simulation, are composed of a collection of nodes in the scene graph. Each node (primitive/prim) can be a mesh, a light, a camera, or a transform. This scene graph is parsed into PhysX, which allocates GPU tensors representing the internal simulation state. OmniPhysics exposes these states through the View APIs which allow read or write access to subsets of objects in the scene while simplifying data managment and improving usability.
 
@@ -47,7 +47,7 @@ Beyond physics, OpenUSD provides complementary schemas that enrich how scenes ca
 
 Isaac Lab provided USD converters for widley used formats including URDF, MJCF, and meshes (e.g., OBJ, DAE).
 
-_Physics Simulation_
+**_Physics Simulation_**
 
 The NVIDIA PhysX software development kit is an open-source, multi-physics simulation engine designed to meet the demanding needs for robotics and industrial applications. It supports a wide range of simulation types, from rigid and articulated bodies to deformable bodies such as cloth, fluids, and soft bodies. These simulation objects can interact with each other through two-way coupling between specialized solvers, enabling efficient and accurate mixed-physics interactions.
 
@@ -58,7 +58,7 @@ NVIDIA Omniverse Physics (OmniPhysics) serves as the integration layer for the P
 Where high-performance and large-scale simulation scenes are required, the USD read-write cycle during simulation is often a performance bottleneck and is therefore bypassed. Instead, the simulation data is accessed through OmniPhysics Tensor APIs, which internally rely on PhysX Direct GPU APIs. For workflows that require rendering, such as vision-in-the-loop training, OmniPhysics also maintains efficient synchronization between the simulation state and the renderer.
 
 
-#### Robot Platform
+**_Robot Platform_**
 
 We use the UFACTORY Lite 6, a 6-degree-of-freedom (DoF) lightweight robotic arm with fully actuated joints, a 440mm reach, 600g payload capacity, repeatability of ±0.5mm, and an ISO 9409-1 compliant parallel gripper.
 
